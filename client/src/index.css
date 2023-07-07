@@ -1,4 +1,8 @@
-body {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* body {
   margin: 0;
   padding: 1rem;
 }
@@ -21,4 +25,4 @@ body {
 
 .task > * + * {
   margin-left: 4px;
-}
+} */
