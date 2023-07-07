@@ -8,14 +8,14 @@ const app = express();
 
 app.use(express.json());
 
-app.get("/api/tasks", async (req, res, next) => {
-  const result = await db.query("SELECT * FROM tasks").catch(next);
+app.get("/api/users", async (req, res, next) => {
+  const result = await db.query("SELECT * FROM users").catch(next);
   res.send(result.rows);
 });
 
-app.get("/api/tasks/:id", async (req, res, next) => {
+app.get("/api/users/:id", async (req, res, next) => {
   const result = await db
-    .query("SELECT * FROM tasks WHERE id = $1", [req.params.id])
+    .query("SELECT * FROM users WHERE id = $2", [req.params.id])
     .catch(next);
 
   if (result.rows.length === 0) {
@@ -25,7 +25,7 @@ app.get("/api/tasks/:id", async (req, res, next) => {
   }
 });
 
-app.post("/api/tasks", async (req, res, next) => {
+app.post("/api/users", async (req, res, next) => {
   const { description } = req.body;
 
   const result = await db
