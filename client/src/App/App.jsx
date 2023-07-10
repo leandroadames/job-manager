@@ -1,8 +1,9 @@
 import React from "react";
-import LandingPage from "../components/Pages/LandingPage.jsx";
+import LandingPage from "../Pages/LandingPage.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import StudentSignUp from "../components/Pages/StudentSignUp.jsx";
-import AdminSignUp from "../components/Pages/AdminSignUp.jsx";
+import StudentSignUp from "../Pages/StudentSignUp.jsx";
+import AdminSignUp from "../Pages/AdminSignUp.jsx";
+import AdminHomePage from "../Pages/AdminHome.jsx";
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
           <Route index element={<LandingPage />} />
           <Route path="/studentsignup" element={<StudentSignUp />} />
           <Route path="/adminsignup" element={<AdminSignUp />} />
+          <Route path="/adminhome" element={<AdminHomePage />} />
         </Routes>
       </BrowserRouter>
     </div>
