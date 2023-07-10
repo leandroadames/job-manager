@@ -1,5 +1,11 @@
-INSERT INTO tasks(description) VALUES('Do the dishes');
-INSERT INTO tasks(description) VALUES('Walk the dog');
-INSERT INTO tasks(description) VALUES('Sweep the floor');
-INSERT INTO tasks(description) VALUES('Do your homework');
-INSERT INTO tasks(description) VALUES('Beat Elden Ring');
+INSERT INTO users (email, password, name, is_admin)
+VALUES ('admin@example.com', 'admin123', 'Admin', true);
+
+-- Insert user data into the "users" table
+INSERT INTO users (email, password, name, is_admin)
+VALUES
+  ('user1@example.com', 'user123', 'User 1', false),
+  ('user2@example.com', 'user123', 'User 2', false),
+  ('user3@example.com', 'user123', 'User 3', false),
+  ('user4@example.com', 'user123', 'User 4', false),
+  ('user5@example.com', 'user123', 'User 5', false);
