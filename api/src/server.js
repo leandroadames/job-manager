@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 
 dotenv.config({ path: "../.env" });
 
-console.log(process.env.DATABASE_URL);
+console.log(process.env.DATABASE_URL, process.env.API_PORT);
 
 export const sql = postgres(process.env.DATABASE_URL);
 

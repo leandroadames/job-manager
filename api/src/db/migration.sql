@@ -17,6 +17,7 @@ CREATE TABLE users (
 
 CREATE TABLE student_info (
   id SERIAL PRIMARY KEY,
+  name TEXT,
   personal_narrative TEXT,
   course_standing TEXT,
   security_clearance TEXT,
