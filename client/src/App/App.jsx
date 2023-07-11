@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import StudentSignUp from "../Pages/StudentSignUp.jsx";
 import AdminSignUp from "../Pages/AdminSignUp.jsx";
 import AdminHomePage from "../Pages/AdminHome.jsx";
+import StudentsHomePage from "../Pages/studentsHomePage.jsx";
 
 export default function App() {
   return (
@@ -14,11 +15,13 @@ export default function App() {
           <Route path="/studentsignup" element={<StudentSignUp />} />
           <Route path="/adminsignup" element={<AdminSignUp />} />
           <Route path="/adminhome" element={<AdminHomePage />} />
+          <Route path="/studenthome" element={<StudentsHomePage />} />
         </Routes>
       </BrowserRouter>
     </div>
   );
 }
+
 // import Counter from "../Counter/Counter.jsx";
 // import c from "./App.module.css";
 // import axios from "axios";
