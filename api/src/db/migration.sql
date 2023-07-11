@@ -1,22 +1,16 @@
-DROP TABLE IF EXISTS student_info, cohort, users;
+DROP TABLE IF EXISTS tasks;
 
-CREATE TABLE cohort (
+CREATE TABLE tasks (
   id SERIAL PRIMARY KEY,
-  name TEXT,
-  start_date TEXT
+  description TEXT
 );
 
-CREATE TABLE users (
-  id SERIAL PRIMARY KEY,
-  email TEXT,
-  password TEXT,
-  name TEXT,
-  is_admin BOOLEAN,
-  cohort_id INTEGER REFERENCES cohort(id)
-);
+
+
 
 CREATE TABLE student_info (
   id SERIAL PRIMARY KEY,
+  name TEXT,
   personal_narrative TEXT,
   course_standing TEXT,
   security_clearance TEXT,
@@ -28,6 +22,3 @@ CREATE TABLE student_info (
   cohort_id INTEGER REFERENCES cohort(id),
   user_id INTEGER REFERENCES users(id)
 );
-
-
-

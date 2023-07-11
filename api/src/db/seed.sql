@@ -1,4 +1,3 @@
--- Insert admin data into the "users" table
 INSERT INTO users (email, password, name, is_admin)
 VALUES ('admin@example.com', 'admin123', 'Admin', true);
 
