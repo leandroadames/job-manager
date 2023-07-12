@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "../Header.jsx";
-import Footer from "../Footer.jsx";
+import Header from "../components/Header.jsx";
+import Footer from "../components/Footer.jsx";
 import { Link } from "react-router-dom";
 
 export default function LandingPage() {
@@ -25,7 +25,7 @@ export default function LandingPage() {
         </div>
         <div className="flex justify-end w-1/2 h-1/2 ml-auto ">
           <img
-            src="/components/imgs/resize.jpg"
+            src="./resize.jpg"
             alt="Image"
             className="rounded-3xl pt-60 mx-60"
           />
