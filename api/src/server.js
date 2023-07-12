@@ -2,13 +2,11 @@ import postgres from "postgres";
 import app from "./middleware/middleware.js";
 import dotenv from "dotenv";
 
-dotenv.config({ path: "../.env" });
-
-console.log(process.env.DATABASE_URL, process.env.API_PORT);
+// dotenv.config({ path: "../.env" });
 
 export const sql = postgres(process.env.DATABASE_URL);
 
-const PORT = process.env.API_PORT;
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);

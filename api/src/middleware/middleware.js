@@ -4,6 +4,7 @@ import userRouter from "../routes/userRouter.js";
 import cohortRouter from "../routes/cohortRouter.js";
 import filesRouter from "../routes/filesRouter.js";
 import signUpRouter from "../routes/signUpRouter.js";
+import studentInfoRouter from "../routes/studentInfoRouter.js";
 import { hashPasswordMiddleware } from "../utils/auth.js";
 
 const app = express();
@@ -13,6 +14,7 @@ app.use(cors());
 
 app.use("/api/signup", hashPasswordMiddleware, signUpRouter);
 app.use("/api/users", userRouter);
+app.use("/api/student-info", studentInfoRouter);
 app.use("/api/cohort", cohortRouter);
 app.use("/api/files", filesRouter);
 
