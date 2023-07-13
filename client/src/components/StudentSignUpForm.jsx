@@ -1,8 +1,29 @@
 import React from "react";
+import {useState} from "react";
+import axios from "axios";
 
 export default function StudentSignUpForm() {
+const [studentForm, setStudentForm] = useState({
+  email: "",
+  name: "",
+  password: "",
+});
+
+const handleSubmitStudentForm = async (e) =>{
+  try{
+    e.preventDefault()
+    const response = await axios.post("http://localhost:3000/api/signup/student", studentForm)
+    console.log(response)
+  }catch(error){
+    console.log(error)
+}
+}
+console.log("studentForm", studentForm)
+
+
   return (
-<div className="bg-gray-700relative flex flex-col justify-center min-h-screen overflow-hidden">
+
+  <div className="bg-gray-700relative flex flex-col justify-center min-h-screen overflow-hidden">
             <div className="w-full p-6 m-auto bg-gray-700 rounded-md shadow-xl lg:max-w-xl">
                 <h1 className="text-3xl font-semibold text-center text-white underline">
                    Student Sign up
@@ -46,5 +67,26 @@ export default function StudentSignUpForm() {
                 </form>
             </div>
         </div>
+
+    <form 
+    onSubmit={(e) => handleSubmitStudentForm(e)}
+    >
+      <input
+      onChange={(e) => setStudentForm({...studentForm, email: e.target.value})}
+      placeholder="EMAIL"
+      value={studentForm.email}
+      ></input>
+      <input 
+      onChange={(e) => setStudentForm({...studentForm, name: e.target.value})}
+      placeholder="name"
+      value={studentForm.name}
+      ></input>
+      <input placeholder="Password"
+      onChange={(e) => setStudentForm({...studentForm, password: e.target.value})}
+      value={studentForm.password}
+      ></input>
+      <button type="submit">Submit</button>
+    </form>
+
   );
 }
