@@ -37,4 +37,5 @@ export const createUser = async (req, res) => {
     console.error(err.message);
     res.status(400).json({ err: err.message });
   }
+
 };
