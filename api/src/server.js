@@ -2,13 +2,13 @@ import postgres from "postgres";
 import app from "./middleware/middleware.js";
 import dotenv from "dotenv";
 
-//dotenv.config({ path: "../.env" });
+// dotenv.config({ path: "../.env" });
 
-console.log(process.env.DATABASE_URL, process.env.PORT);
 
 export const sql = postgres(process.env.DATABASE_URL);
 
 const PORT = process.env.PORT;
+
 
 app.get("/api/users/:name", (req, res) => {
   const { name } = req.params; // Access the parameter from req.params
@@ -26,6 +26,7 @@ app.get("/api/users/:name", (req, res) => {
       res.status(500).json({ error: "Failed to retrieve students" });
     });
 });
+
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
