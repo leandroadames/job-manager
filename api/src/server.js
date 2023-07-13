@@ -2,9 +2,7 @@ import postgres from "postgres";
 import app from "./middleware/middleware.js";
 import dotenv from "dotenv";
 
-//dotenv.config({ path: "../.env" });
-
-console.log(process.env.DATABASE_URL, process.env.PORT);
+// dotenv.config({ path: "../.env" });
 
 export const sql = postgres(process.env.DATABASE_URL);
 
