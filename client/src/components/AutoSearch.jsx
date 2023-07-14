@@ -30,14 +30,14 @@ const AutoSearch = () => {
   };
 
   const handleSelectSuggestion = (user) => {
-    setStudents([user.name, ...students]);
+    setStudents([{ name: user.name, id: user.id }, ...students]);
     console.log(students);
     setSearchTerm("");
   };
 
   return (
     <div>
-      <form>
+      <div>
         <input
           className="flex text-black w-52"
           type="text"
@@ -59,7 +59,7 @@ const AutoSearch = () => {
             ))}
           </ul>
         )}
-      </form>
+      </div>
     </div>
   );
 };
