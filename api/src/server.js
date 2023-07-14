@@ -25,20 +25,46 @@ app.get("/api/users/:name", (req, res) => {
     });
 });
 
+app.get("/api/studentInfo", (req, res) => {
+  sql`SELECT *
+  FROM student_info
+   `
+    .then((data) => {
+      res.json(data);
+      console.log();
+    })
+    .catch((error) => {
+      console.error("Error retrieving info:", error);
+      res.status(500).json({ error: "Failed to retrieve info" });
+    });
+});
+
 app.get("/api/cohorts", (req, res) => {
   sql`
     SELECT *
     FROM cohort
   `
     .then((result) => {
-      console.log("Result:", result);
-      const cohorts = result.rows;
-      console.log("Cohorts:", cohorts);
-      res.json(cohorts);
+      console.log("Cohorts:", result);
+      res.json(result);
     })
     .catch((error) => {
       console.error("Error retrieving cohorts:", error);
       res.status(500).json({ error: "Failed to retrieve cohorts" });
+    });
+});
+
+app.get("/api/studentInfo/:id", (req, res) => {
+  const id = req.params.id; // Retrieve the id from the URL parameters
+
+  sql`SELECT * FROM student_info WHERE cohort_id = ${id}`
+    .then((result) => {
+      console.log("students:", result);
+      res.json(result);
+    })
+    .catch((error) => {
+      console.error("Error retrieving students:", error);
+      res.status(500).json({ error: "Failed to retrieve students" });
     });
 });
 
@@ -48,12 +74,16 @@ app.post("/api/cohorts", (req, res) => {
   const newCohort = sql`
     INSERT INTO cohort (name, start_date)
     VALUES (${cohortName}, ${startDate}) RETURNING *
-  `
+  `;
 
-    .then(() => {
-      for (let student of students) {
-        sql`UPDATE student_info SET cohort_id = ${newCohort.id} WHERE user_id = ${student.id}`;
-      }
+  newCohort
+    .then((result) => {
+      const cohortId = result[0].id;
+      const updatePromises = students.map((student) => {
+        console.log("Student ID:", student.id);
+        return sql`UPDATE student_info SET cohort_id = ${cohortId} WHERE user_id = ${student.id}`;
+      });
+      return Promise.all(updatePromises);
     })
     .then(() => {
       res.status(201).json({ message: "Cohort created successfully" });

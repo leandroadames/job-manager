@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import ReactModal from "react-modal";
 import AutoSearch from "./AutoSearch";
 import { useStudents } from "../context/StudentProvider";
 import axios from "axios";
 
 function CohortModal() {
-  const { students } = useStudents();
+  const { students, fetchCohorts } = useStudents();
   const [cohortName, setCohortName] = useState("");
   const [startDate, setStartDate] = useState("");
 
@@ -21,9 +20,11 @@ function CohortModal() {
         students,
       });
       console.log(response.data);
+      fetchCohorts();
     } catch (err) {
       console.error(err.message);
     }
+
     // Perform your form submission logic here
   };
 
