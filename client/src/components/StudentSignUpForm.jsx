@@ -38,7 +38,7 @@ export default function StudentSignUpForm() {
             </label>
             <input
               type="email"
-              className="block w-full px-4 py-2 mt-2 text-white bg-white border rounded-md focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              className="block w-full px-4 py-2 mt-2  bg-white border rounded-md focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40 "
             />
           </div>
           <div className="mb-2">
@@ -50,7 +50,7 @@ export default function StudentSignUpForm() {
             </label>
             <input
               type="password"
-              className="block w-full px-4 py-2 mt-2 text-white bg-white border rounded-md focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              className="block w-full px-4 py-2 mt-2  bg-white border rounded-md focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
           </div>
           <a href="#" className="text-xs text-white hover:underline">
