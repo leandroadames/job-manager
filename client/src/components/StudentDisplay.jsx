@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import ReactModal from "react-modal";
 import StudentModalInfo from "./StudentModalInfo";
-
+import { useStudents } from "../context/StudentProvider";
 export default function StudentDisplay() {
-  const [students, setStudents] = useState([]);
+  const { students } = useStudents();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [activeAccordion, setActiveAccordion] = useState(null);
   const options = [
@@ -16,17 +16,17 @@ export default function StudentDisplay() {
     setActiveAccordion(activeAccordion === index ? null : index);
   };
 
-  useEffect(() => {
-    fetch("/api/users")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data.allUsers);
-        setStudents(data.allUsers); // Save the data in the state
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch("/api/users")
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log(data.allUsers);
+  //       setStudents(data.allUsers); // Save the data in the state
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }, []);
 
   return (
     <div className="bg-gray-800 flex flex-col w-2/3 h-auto mt-2 rounded-lg p-2.5">
@@ -47,7 +47,7 @@ export default function StudentDisplay() {
                 aria-controls={`accordion-collapse-body-${index}`}
                 onClick={() => toggleAccordion(index)} // Add event handler to toggle visibility
               >
-                <span>{student.name}</span>
+                <span>{student.user_id}</span>
                 <svg
                   data-accordion-icon
                   className={`w-3 h-3 rotate-180 shrink-0 ${
