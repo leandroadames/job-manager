@@ -1,20 +1,31 @@
 import React, { useState } from "react";
-import ReactModal from "react-modal";
 import AutoSearch from "./AutoSearch";
 import { useStudents } from "../context/StudentProvider";
+import axios from "axios";
 
 function CohortModal() {
-  const { students } = useStudents();
+  const { students, fetchCohorts } = useStudents();
   const [cohortName, setCohortName] = useState("");
   const [startDate, setStartDate] = useState("");
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault();
+      console.log("Cohort Name:", cohortName);
+      console.log("Start Date:", startDate);
+      console.log("Students:", students);
+      const response = await axios.post("/api/cohorts", {
+        cohortName,
+        startDate,
+        students,
+      });
+      console.log(response.data);
+      fetchCohorts();
+    } catch (err) {
+      console.error(err.message);
+    }
 
     // Perform your form submission logic here
-    console.log("Cohort Name:", cohortName);
-    console.log("Start Date:", startDate);
-    console.log("Students:", students);
   };
 
   return (
@@ -26,7 +37,10 @@ function CohortModal() {
         <div className="flex justify-center items-center text-2xl font-bold mb-4 mr-12">
           New Cohort
         </div>
-        <div className="flex flex-col text-black">
+        <form
+          onSubmit={(e) => handleSubmit(e)}
+          className="flex flex-col text-black"
+        >
           <input
             className="mb-4 mr-12 w-52"
             placeholder="Cohort Name"
@@ -40,7 +54,7 @@ function CohortModal() {
             onChange={(e) => setStartDate(e.target.value)}
           />
           <AutoSearch />
-        </div>
+        </form>
       </div>
       <div>
         <div className="flex justify-center items-center text-2xl font-bold mb-4 mr-12">
@@ -53,7 +67,7 @@ function CohortModal() {
           <ul className="flex-col">
             {students.map((student, index) => (
               <li className="text-xl" key={index}>
-                {student}
+                {student.name}
               </li>
             ))}
           </ul>
