@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import FaAngellist from "react-icons/fa"
 
 export default function StudentComponents() {
   const [resumeInputValue, setResumeInputValue] = useState("");

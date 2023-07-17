@@ -21,6 +21,8 @@ CREATE TABLE student_info (
   personal_narrative TEXT,
   course_standing TEXT,
   security_clearance TEXT,
+  resume TEXT,
+  cover_letter TEXT,
   ed_background TEXT,
   degree_status TEXT,
   career_service_manager TEXT,
