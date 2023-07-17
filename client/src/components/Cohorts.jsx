@@ -16,7 +16,8 @@ export default function Cohorts() {
 
   const handleAddButtonClick = () => {
     setModalIsOpen(true);
-    console.log("hello");
+    
+
   };
 
   const cohortStudents = async (cohortId) => {
